@@ -1,0 +1,24 @@
+package api.tchiiwa.microservice.features.person.application.dtos;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.ws.rs.QueryParam;
+
+public class PaginationPersonRequestDTO {
+    @QueryParam("page")
+    @Min(value = 0, message = "A página deve ser maior ou igual a 0")
+    private int page;
+
+    @QueryParam("size")
+    @Min(value = 1, message = "O tamanho deve ser no mínimo 1")
+    @Max(value = 100, message = "O tamanho máximo permitido é 100")
+    private int size;
+
+    public int getPage() {
+        return page;
+    }
+
+    public int getSize() {
+        return size;
+    }
+}
